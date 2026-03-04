@@ -1,0 +1,19 @@
+
+# База данных
+backend/users.db
+
+# Питон
+venv/
+__pycache__/
+*.pyc
+.env
+
+# Node
+frontend/node_modules/
+
+# Mac
+.DS_Store
+EOF
+
+# Start
+Start.txt
