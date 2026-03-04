@@ -39,7 +39,7 @@ from datetime import datetime, timedelta
 # 1. КОНФИГ
 # ─────────────────────────────────────────────
 ARTIFACTS_DIR = "./movie_rec_artifacts"
-SECRET_KEY = "FFYQWOUFHADSJFOIVBVNXZCNFSDMWYIU"  # <- сменить!
+SECRET_KEY = os.getenv("SECRET_KEY", "local_dev_key_change_in_prod")
 ALGORITHM = "HS256"
 TOKEN_EXPIRE_MINUTES = 60 * 24 * 7  # неделя
 
