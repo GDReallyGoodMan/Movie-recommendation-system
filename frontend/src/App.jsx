@@ -573,10 +573,9 @@ export default function App() {
     setDetailPoster(null);
     setPage("detail");
     window.scrollTo({ top: 0, behavior: "smooth" });
-    // Всегда идём в TMDB API для детальной страницы
-    fetch(`https://api.themoviedb.org/3/movie/${movie.tmdb_id}?api_key=${TMDB_API_KEY}`)
+    fetch(`${API}/poster/${movie.tmdb_id}`)
       .then(r => r.json())
-      .then(d => setDetailPoster(d.poster_path ? `${TMDB_IMG}${d.poster_path}` : PLACEHOLDER))
+      .then(d => setDetailPoster(d.poster_url || PLACEHOLDER))
       .catch(() => setDetailPoster(PLACEHOLDER));
 
     try {
