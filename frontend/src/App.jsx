@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 // ── CONFIG ──────────────────────────────────────────────
-const API = "http://localhost:8000";
+const API = "https://movie-recommendation-system-9gzk.onrender.com";
 const TMDB_API_KEY = "2e22908422b7b1e77610fabea6b3275e";
 const TMDB_IMG = "https://image.tmdb.org/t/p/w500";
 const PLACEHOLDER = `https://placehold.co/300x450/141420/e2b04a?text=No+Poster`;
