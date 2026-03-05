@@ -385,3 +385,20 @@ def me(user=Depends(get_current_user)):
         "watch_count": user["watch_count"],
         "watched_ids": json.loads(user["watched_ids"] or "[]"),
     }
+
+
+import httpx
+
+TMDB_API_KEY = "2e22908422b7b1e77610fabea6b3275e"
+
+@app.get("/poster/{tmdb_id}")
+async def get_poster(tmdb_id: int):
+    """Проксируем запрос к TMDB через бэкенд — решает проблему CORS на Safari."""
+    async with httpx.AsyncClient() as client:
+        res = await client.get(
+            f"https://api.themoviedb.org/3/movie/{tmdb_id}",
+            params={"api_key": TMDB_API_KEY}
+        )
+        data = res.json()
+        poster = data.get("poster_path")
+        return {"poster_url": f"https://image.tmdb.org/t/p/w500{poster}" if poster else None}

@@ -15,11 +15,9 @@ async function fetchPoster(tmdbId, posterPath) {
   }
   if (posterCache[tmdbId]) return posterCache[tmdbId];
   try {
-    const res = await fetch(
-      `https://api.themoviedb.org/3/movie/${tmdbId}?api_key=${TMDB_API_KEY}`
-    );
+    const res = await fetch(`${API}/poster/${tmdbId}`);
     const data = await res.json();
-    const url = data.poster_path ? `${TMDB_IMG}${data.poster_path}` : PLACEHOLDER;
+    const url = data.poster_url || PLACEHOLDER;
     posterCache[tmdbId] = url;
     return url;
   } catch {
