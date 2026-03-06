@@ -389,8 +389,3 @@ Movie-recommendation-system/
 [![Демо](https://img.shields.io/badge/🎬_Попробовать-Демо-success?style=for-the-badge)](https://movie-recommendation-system-nu-seven.vercel.app/)
 [![GitHub Stars](https://img.shields.io/github/stars/GDReallyGoodMan/Movie-recommendation-system?style=for-the-badge)](https://github.com/GDReallyGoodMan/Movie-recommendation-system/stargazers)
 
----
-
-**Production-Ready | Быстро | Точно | Open Source**
-
-</div>
