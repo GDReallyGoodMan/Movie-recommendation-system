@@ -1,12 +1,14 @@
-# 🎬 Гибридная рекомендательная система фильмов
+# 🎬 Cinematch - Гибридная рекомендательная система фильмов 
 
 > **Умные рекомендации фильмов на основе Sentence-Transformer эмбеддингов, коллаборативной фильтрации и гибридного реранкинга**
 
-[![Live Demo](https://img.shields.io/badge/🎬_Демо-Онлайн-success?style=for-the-badge)](https://movie-recommendation-system-nu-seven.vercel.app/)
-[![Kaggle](https://img.shields.io/badge/⭐_Одобрено-Kaggle_Grandmaster-orange?style=for-the-badge)](https://www.kaggle.com/)
-[![Validated](https://img.shields.io/badge/✓_Проверено-Экспертом_ВШЭ-blue?style=for-the-badge)](#валидация)
+[![Live Demo](https://img.shields.io/badge/🎬_Live_Demo-Online-success?style=for-the-badge)](https://movie-recommendation-system-nu-seven.vercel.app/)
+[![Kaggle](https://img.shields.io/badge/Kaggle-6_votes-20BEFF?style=for-the-badge&logo=kaggle)](https://www.kaggle.com/code/gdreallygoodman/movies-recsys-sent-transf-colab-filter-rerank)
+[![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
+[![React](https://img.shields.io/badge/Frontend-React-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
 
-**[🚀 Демо](https://movie-recommendation-system-nu-seven.vercel.app/)** | **[📓 Ноутбук](https://www.kaggle.com/)** | **[🎯 Попробовать](https://movie-recommendation-system-nu-seven.vercel.app/)**
+
+**[🚀 Демо](https://movie-recommendation-system-nu-seven.vercel.app/)** | **[📓 Ноутбук]([https://www.kaggle.com/](https://www.kaggle.com/code/gdreallygoodman/movies-recsys-sent-transf-colab-filter-rerank))** 
 
 ---
 
@@ -69,14 +71,12 @@ upvote от Kaggle Expert<br>
 ## 🚀 Демо онлайн
 
 **Попробуйте сами:** [movie-recommendation-system-nu-seven.vercel.app](https://movie-recommendation-system-nu-seven.vercel.app/)
-
+> 💤 **Первый запуск может занять ~30 секунд** — бэкенд засыпает после простоя. Просто подождите, всё загрузится автоматически.
 **Возможности:**
 - ✨ Холодный старт с 10 отобранными фильмами
 - 🎬 Клик на фильм → Получите 10 умных рекомендаций
 - 👤 Персонализированный профиль (адаптируется к вашему вкусу)
 - 🔄 Обновление в реальном времени по мере просмотра
-
-> 💤 **Первый запуск может занять ~30 секунд** — бэкенд засыпает после простоя. Просто подождите, всё загрузится автоматически.
 
 ---
 
@@ -296,20 +296,6 @@ def rerank(candidates, beta=0.7):
 
 ---
 
-### **Тест 3: "Форрест Гамп" (Драма)**
-```
-Топ рекомендаций:
-1. Good Will Hunting         (8.0★) - Жизненный путь
-2. Being There              (7.9★) - Необычный протагонист
-3. Zelig                     (7.7★) - Экстраординарная жизнь
-4. The Green Mile            (8.5★) - Эмоциональная глубина
-5. 12 Angry Men             (8.9★) - Тема справедливости
-
-Качество: 9/10 - Глубокие тематические связи
-```
-
----
-
 ## 🚀 Быстрый старт
 
 ### **Вариант 1: Попробовать демо**
@@ -376,133 +362,12 @@ Movie-recommendation-system/
 
 ---
 
-## 🔬 Основные моменты исследования
-
-### **Путь от идеи до production**
-
-#### **Фаза 1: Простой Content-Based (Неделя 1)**
-- Использовал TF-IDF → Слишком поверхностно, пропускало семантические связи
-- Переключился на Sentence-Transformer → Намного лучше!
-- Проблема: Много низкокачественных фильмов в результатах
-
-#### **Фаза 2: Фильтрация качества (Неделя 1)**
-- Добавил фильтры: рейтинг≥6.0, голосов>100
-- Датасет: 5000 → 4187 фильмов
-- Результат: Качество резко улучшилось
-
-#### **Фаза 3: Эксперименты с жанрами (Неделя 2)**
-- **Провал:** Центроиды жанров не работают (центроид Комедии → совпал с Триллерами!)
-- **Вывод:** Жанры должны быть пост-фильтрами, а не построителями запросов
-- **Инсайт:** Эмбеддинги кластеризуются по темам, а не по ярлыкам
-
-#### **Фаза 4: Полные сюжеты (Неделя 2)**
-- Переключился с кратких описаний на полные сюжеты Wikipedia
-- Результат: Более глубокие тематические связи (например, фильмы про "жизненный путь")
-- Пример: "Форрест Гамп" → "Being There" (оба: необычный протагонист)
-
-#### **Фаза 5: Коллаборативная фильтрация (Неделя 3)**
-- Добавил ALS на рейтингах MovieLens
-- Результат: Захватил паттерны поведения пользователей
-- Пример: Система теперь знает что фанаты "Форрест Гампа" любят "Бойцовский клуб"
-
-#### **Фаза 6: Гибридная система (Неделя 3)**
-- Объединил текст (768d) + коллаб (50d) = 818d векторов
-- FAISS для быстрого поиска
-- Результат: Лучшее из обоих миров!
-
-#### **Фаза 7: Реранкинг (Неделя 3)**
-- Добавил реранкинг на основе рейтинга
-- Результат: Качество совпадает с рекомендациями IMDb
-- **ВАЛИДИРОВАНО Kaggle Grandmaster** ✅
-
----
-
-## 🎯 Сценарии использования
-
-**Для пользователей:**
-- 🎬 Открыть фильмы похожие на любимые
-- 🔍 Найти скрытые жемчужины, которые не искали бы сами
-- 📊 Получить персонализированные рекомендации
-- ⚡ Быстро, точно, без регистрации
-
-**Для разработчиков:**
-- 📚 Изучить гибридные рекомендательные системы
-- 🔬 Исследовать применения Sentence-BERT
-- ⚡ Увидеть FAISS оптимизацию в действии
-- 🛠️ Production-ready примеры кода
-
-**Для исследователей:**
-- 📖 Полный лог исследования включен
-- 🧪 Все эксперименты задокументированы
-- 💡 Неудачные подходы объяснены
-- 📊 Воспроизводимые результаты
-
----
-
-## 🔮 Планы на будущее
-
-**Запланированные функции:**
-- [ ] Поддержка нескольких языков (русский, испанский и др.)
-- [ ] Временная динамика (недавние просмотры важнее)
-- [ ] Контекстные рекомендации (настроение, время суток)
-- [ ] Социальные функции (рекомендации друзей)
-- [ ] Схожесть на основе изображений (постеры через CV)
-- [ ] Объяснимость ("Рекомендовано потому что...")
-
-**Технические улучшения:**
-- [ ] Расширить до 50k+ фильмов
-- [ ] Neural collaborative filtering (deep learning)
-- [ ] Фреймворк A/B тестирования в реальном времени
-- [ ] Production мониторинг (задержка, качество)
-
----
-
-## 📚 Технические референсы
-
-**Реализованные статьи:**
-- Reimers & Gurevych (2019). *"Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks"*
-- Hu et al. (2008). *"Collaborative Filtering for Implicit Feedback Datasets"*
-- Johnson et al. (2017). *"Billion-scale similarity search with GPUs"* (FAISS)
-
-**Ключевые библиотеки:**
-- [sentence-transformers](https://www.sbert.net/) - Семантические эмбеддинги
-- [implicit](https://github.com/benfred/implicit) - Быстрая реализация ALS
-- [faiss](https://github.com/facebookresearch/faiss) - Поиск схожести векторов
-- [FastAPI](https://fastapi.tiangolo.com/) - Современный Python API
-- [React](https://react.dev/) - Frontend фреймворк
-
----
-
-## 🤝 Контрибуции
-
-Приветствуются! Области интереса:
-- Дополнительные модели эмбеддингов
-- Альтернативные коллаборативные методы
-- Улучшения frontend
-- Оптимизация производительности
-- Документация
-
-**Как внести вклад:**
-1. Fork репозитория
-2. Создать feature branch (`git checkout -b feature/amazing`)
-3. Commit изменений (`git commit -m 'Add amazing feature'`)
-4. Push в branch (`git push origin feature/amazing`)
-5. Открыть Pull Request
-
----
-
-## 📄 Лицензия
-
-MIT License - см. [LICENSE](LICENSE) для деталей.
-
----
-
 ## 👤 Автор
 
 **GDReallyGoodMan**
 
 - 🐙 GitHub: [@GDReallyGoodMan](https://github.com/GDReallyGoodMan)
-- 🏆 Kaggle: [Профиль](https://www.kaggle.com/)
+- 🏆 Kaggle: [Профиль](https://www.kaggle.com/gdreallygoodman)
 - 💼 Проект: [Movie Recommendation System](https://github.com/GDReallyGoodMan/Movie-recommendation-system)
 - 🌐 Демо: [movie-recommendation-system-nu-seven.vercel.app](https://movie-recommendation-system-nu-seven.vercel.app/)
 
@@ -519,8 +384,6 @@ MIT License - см. [LICENSE](LICENSE) для деталей.
 ---
 
 <div align="center">
-
-### 🎬 **Создано с любовью к кино и машинному обучению** 🎬
 
 **⭐ Если проект был полезен, поставьте звезду на GitHub! ⭐**
 
