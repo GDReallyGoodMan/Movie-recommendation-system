@@ -327,50 +327,19 @@ cd Movie-recommendation-system
 
 **2. Установить зависимости**
 ```bash
-pip install -r requirements.txt
+pip install -r backend/requirements.txt
 ```
 
-**3. Скачать модели**
+**3. Запустить Backend**
 ```bash
-python scripts/download_models.py
-# Скачивает предобученные эмбеддинги и FAISS индекс
+cd "/Users/denisgusin/Desktop/code/Movie Recomend Project/backend"
+source ../venv/bin/activate
+uvicorn main:app --reload
 ```
 
-**4. Запустить Backend**
-```bash
-cd backend
-python app.py
-# API доступен на http://localhost:5000
-```
-
-**5. Запустить Frontend**
-```bash
-cd frontend
-npm install
-npm run dev
-# Открыть http://localhost:3000
-```
-
----
-
-### **Вариант 3: Использовать API**
-
-**Получить рекомендации:**
-```bash
-curl -X POST http://localhost:5000/api/recommend \
-  -H "Content-Type: application/json" \
-  -d '{"tmdb_id": 107, "k": 10, "alpha": 0.8}'
-```
-
-**Ответ:**
-```json
-{
-  "recommendations": [
-    {"title": "Lock, Stock and Two Smoking Barrels", "rating": 7.5, "score": 0.477},
-    {"title": "Reservoir Dogs", "rating": 8.1, "score": 0.550},
-    ...
-  ]
-}
+**4. Запустить Frontend**
+```bash (Запускаем в корне проекта)
+cd frontend && npm run dev
 ```
 
 ---
@@ -379,41 +348,30 @@ curl -X POST http://localhost:5000/api/recommend \
 
 ```
 Movie-recommendation-system/
+├── .gitignore
+├── Start.txt
+│
 ├── backend/
-│   ├── app.py                    # FastAPI сервер
-│   ├── recommender.py            # Ядро рекомендательной системы
-│   ├── models/
-│   │   ├── embeddings.npy        # Предвычисленные векторы
-│   │   ├── faiss_index.bin       # FAISS индекс
-│   │   └── als_model.pkl         # ALS модель
-│   └── utils.py
+│   ├── main.py                    # FastAPI бэкенд
+│   ├── requirements.txt           # Python зависимости
+│   ├── runtime.txt                # Версия Python для Render
+│   ├── users.db                   # SQLite БД (локально, не в git)
+│   └── movie_rec_artifacts/       # ML артефакты
+│       ├── movies_data.parquet    # Метаданные фильмов
+│       ├── embeddings_norm.npy    # Текстовые эмбеддинги
+│       ├── collab_vectors.npy     # Коллаборативные векторы
+│       ├── common_movies.npy      # Общие фильмы
+│       ├── hybrid_index.faiss     # FAISS индекс
+│       ├── tmdb_to_data_idx.json  # Маппинг TMDB → data
+│       ├── tmdb_to_common_idx.json# Маппинг TMDB → common
+│       └── cold_start.json        # Стартовые фильмы
 │
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── MovieCard.jsx
-│   │   │   └── RecommendationList.jsx
-│   │   ├── pages/
-│   │   │   ├── Home.jsx
-│   │   │   └── Recommendations.jsx
-│   │   └── App.jsx
-│   └── package.json
-│
-├── data/
-│   ├── movies_metadata.csv       # TMDb 5000 датасет
-│   ├── ratings.csv               # MovieLens рейтинги
-│   ├── links.csv                 # TMDb-MovieLens маппинг
-│   └── wiki_plots.csv            # Сюжеты из Wikipedia
-│
-├── notebooks/
-│   └── sentence-transformer-for-movies.ipynb
-│
-├── scripts/
-│   ├── download_models.py
-│   └── generate_embeddings.py
-│
-├── requirements.txt
-└── README.md
+└── frontend/
+    ├── src/
+    │   └── App.jsx                # Весь React фронт
+    ├── index.html
+    ├── vite.config.js
+    └── package.json
 ```
 
 ---
@@ -424,7 +382,7 @@ Movie-recommendation-system/
 
 #### **Фаза 1: Простой Content-Based (Неделя 1)**
 - Использовал TF-IDF → Слишком поверхностно, пропускало семантические связи
-- Переключился на Sentence-BERT → Намного лучше!
+- Переключился на Sentence-Transformer → Намного лучше!
 - Проблема: Много низкокачественных фильмов в результатах
 
 #### **Фаза 2: Фильтрация качества (Неделя 1)**
