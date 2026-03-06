@@ -8,7 +8,7 @@
 [![React](https://img.shields.io/badge/Frontend-React-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
 
 
-**[🚀 Демо](https://movie-recommendation-system-nu-seven.vercel.app/)** | **[📓 Ноутбук]([https://www.kaggle.com/](https://www.kaggle.com/code/gdreallygoodman/movies-recsys-sent-transf-colab-filter-rerank))** 
+**[🚀 Демо](https://movie-recommendation-system-nu-seven.vercel.app/)** | **[📓 Ноутбук](https://www.kaggle.com/code/gdreallygoodman/movies-recsys-sent-transf-colab-filter-rerank)** 
 
 ---
 
@@ -100,14 +100,14 @@ upvote от Kaggle Expert<br>
     ↓
 ┌─────────────────────────────────────────┐
 │  3. Гибридный реранкинг                 │
-│     score = 0.8×text_sim + 0.2×collab   │
-│     Исключение просмотренных фильмов    │
+│   • score = 0.8×text_sim + 0.2×collab   │
+│   • Исключение просмотренных фильмов    │
 └─────────────────────────────────────────┘
     ↓
 ┌─────────────────────────────────────────┐
 │  4. Усиление качества                   │
-│     final = 0.7×hybrid + 0.3×rating     │
-│     Возврат топ-10 рекомендаций         │
+│   • final = 0.7×hybrid + 0.3×rating     │
+│   • Возврат топ-10 рекомендаций         │
 └─────────────────────────────────────────┘
     ↓
 Результат: Высококачественный персональный список
@@ -244,7 +244,6 @@ import faiss
 index = faiss.IndexFlatIP(818)  # Inner Product = косинусная схожесть
 index.add(hybrid_embeddings)
 
-# Поиск: в 40x быстрее чем brute force
 distances, indices = index.search(query_vector, k=100)
 ```
 
