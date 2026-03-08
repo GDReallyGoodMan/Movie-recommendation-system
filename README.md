@@ -122,8 +122,8 @@ upvote от Kaggle Expert<br>
 **Результат:** Топ совпадений - "Семь", "Леон", "Криминальное чтиво" (не комедии!)  
 **Вывод:** Эмбеддинги группируются по *темам*, а не по жанровым ярлыкам  
 > ⏳ **Подождите несколько секунд** — Грузятся изображение распределения на плоскости и gif распределения в 3D.
-<img width="1025" height="614" alt="Screenshot 2026-03-06 at 15 40 47" src="https://github.com/user-attachments/assets/94a18baa-d0a6-4381-a5c3-bc0b32a0348e" />
-![semantic_3d_genres](https://github.com/user-attachments/assets/935dcd0b-47f8-46bb-aeba-37f08b93b462)
+<img width="1025" height="614" alt="Screenshot 2026-03-06 at 15 40 47" src="himages/2d.png"/>
+![semantic_3d_genres](images/3d.gif)
 
 
 ---
