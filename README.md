@@ -56,9 +56,10 @@ upvote от Kaggle Expert<br>
   1. Lock, Stock and Two Smoking Barrels  ← Тот же режиссер! 🎯
   2. Reservoir Dogs                       ← Похожий стиль (Тарантино - актер)
   3. GoodFellas                          ← Классика криминала
-  4. The Usual Suspects                  ← Криминал + твист
+  4. Thief                                ← Криминал + сюжет про бриллианты
   5. Whiplash                            ← Интенсивность
 ```
+<img src="images/Page.png" alt="3D semantic genres">
 
 **Почему это работает:**
 - 🧠 **Семантическое понимание** - Находит тематические связи, а не просто совпадения жанров
