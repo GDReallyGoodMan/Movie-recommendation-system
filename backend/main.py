@@ -182,7 +182,7 @@ def recommend_hybrid_rerank(
     if df.empty:
         return []
 
-    df["rating_norm"] = (df["vote_average"] - 6.5) / (10 - 6.5)
+    df["rating_norm"] = (df["vote_average"] - 6.0) / (10 - 6.0)
     df["score"] = beta * df["hybrid_dist"] + (1 - beta) * df["rating_norm"]
     df = df.sort_values("score", ascending=False).head(k)
 
