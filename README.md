@@ -3,7 +3,7 @@
 > **Умные рекомендации фильмов на основе Sentence-Transformer эмбеддингов, коллаборативной фильтрации и гибридного реранкинга**
 
 [![Live Demo](https://img.shields.io/badge/🎬_Live_Demo-Online-success?style=for-the-badge)](https://movie-recommendation-system-nu-seven.vercel.app/)
-[![Kaggle](https://img.shields.io/badge/Kaggle-6_votes-20BEFF?style=for-the-badge&logo=kaggle)](https://www.kaggle.com/code/gdreallygoodman/movies-recsys-sent-transf-colab-filter-rerank)
+[![Kaggle](https://img.shields.io/badge/Kaggle-9_votes-20BEFF?style=for-the-badge&logo=kaggle)](https://www.kaggle.com/code/gdreallygoodman/movies-recsys-sent-transf-colab-filter-rerank)
 [![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
 [![React](https://img.shields.io/badge/Frontend-React-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
 
