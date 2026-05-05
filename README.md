@@ -40,7 +40,7 @@ upvote от Kaggle Expert<br>
 </tr>
 <tr>
 <td colspan="3" align="center">
-<b>6 upvotes от практикующих ML-инженеров</b> · Гибридный подход одобрен сообществом
+<b>9 upvotes от практикующих ML-инженеров</b> · Гибридный подход одобрен сообществом
 </td>
 </tr>
 </table>
