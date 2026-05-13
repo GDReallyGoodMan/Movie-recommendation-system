@@ -9,10 +9,9 @@
 
 
 **[🚀 Демо](https://movie-recommendation-system-nu-seven.vercel.app/)** | **[📓 Ноутбук](https://www.kaggle.com/code/gdreallygoodman/movies-recsys-sent-transf-colab-filter-rerank)** 
-
 ---
 
-## 🏆 Признание
+## 🥉 Бронзовая медаль (10 Upvotes)
 
 <table>
 <tr>
@@ -20,27 +19,27 @@
 
 ### 🏆 Grandmaster
 upvote от Kaggle Grandmaster<br>
-<sub>Топ 0.1% ML экспертов в мире</sub>
+<sub>Топ 0.1% ML-экспертов</sub>
 
 </td>
 <td align="center" width="33%">
 
 ### 🥇 Master
 upvote от Kaggle Master<br>
-<sub>Топ 1% сообщества Kaggle</sub>
+<sub>Топ 1% сообщества</sub>
 
 </td>
 <td align="center" width="33%">
 
 ### 🥈 Expert
 upvote от Kaggle Expert<br>
-<sub>Подтверждённый ML-специалист</sub>
+<sub>Подтверждённый спец</sub>
 
 </td>
 </tr>
 <tr>
 <td colspan="3" align="center">
-<b>9 upvotes от практикующих ML-инженеров</b> · Гибридный подход одобрен сообществом
+<b>10 upvotes от практиков</b> · Решение прошло проверку комьюнити!
 </td>
 </tr>
 </table>
