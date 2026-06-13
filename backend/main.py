@@ -184,9 +184,7 @@ def recommend_hybrid_rerank(
 
     df["rating_norm"] = (df["vote_average"] - 6.0) / (10 - 6.0)
 
-    df["hybrid_sim"] = 1 / (1 + df["hybrid_dist"])
-    df["score"] = beta * df["hybrid_sim"] + (1 - beta) * df["rating_norm"]
-    # df["score"] = beta * df["hybrid_dist"] + (1 - beta) * df["rating_norm"]
+    df["score"] = beta * df["hybrid_dist"] + (1 - beta) * df["rating_norm"]
     df = df.sort_values("score", ascending=False).head(k)
 
     result = []
@@ -416,4 +414,4 @@ async def get_poster(tmdb_id: int):
         )
         data = res.json()
         poster = data.get("poster_path")
-        return {"poster_url": f"https://image.tmdb.org/t/p/w500{poster}" if poster else None}
+        return {"poster_url": f"https://image.tmdb.org/t/p/w500{poster}" if poster else None}   
