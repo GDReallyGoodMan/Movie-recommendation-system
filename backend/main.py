@@ -183,7 +183,10 @@ def recommend_hybrid_rerank(
         return []
 
     df["rating_norm"] = (df["vote_average"] - 6.0) / (10 - 6.0)
-    df["score"] = beta * df["hybrid_dist"] + (1 - beta) * df["rating_norm"]
+
+    df["hybrid_sim"] = 1 / (1 + df["hybrid_dist"])
+    df["score"] = beta * df["hybrid_sim"] + (1 - beta) * df["rating_norm"]
+    # df["score"] = beta * df["hybrid_dist"] + (1 - beta) * df["rating_norm"]
     df = df.sort_values("score", ascending=False).head(k)
 
     result = []
@@ -337,12 +340,24 @@ def user_click(req: MovieClickRequest, user=Depends(get_current_user), db=Depend
         avg_collab = np.frombuffer(user["avg_collab_vec"], dtype=np.float32).copy()
 
     # Скользящее среднее
+    alpha = 0.2
+
+    if watch_count == 0:
+        # Если это самый первый фильм пользователя
+        avg_text = text_vec.copy()
+        if collab_vec is not None:
+            avg_collab = collab_vec.copy()
+    else:
+        # Для всех последующих фильмов
+        avg_text = alpha * text_vec + (1.0 - alpha) * avg_text
+        
+        if collab_vec is not None and avg_collab is not None:
+            avg_collab = alpha * collab_vec + (1.0 - alpha) * avg_collab
+        elif collab_vec is not None:
+            avg_collab = collab_vec.copy()
+
+    # Обязательно увеличиваем счетчик для сохранения в БД
     new_count = watch_count + 1
-    avg_text = (avg_text * watch_count + text_vec) / new_count
-    if collab_vec is not None:
-        avg_collab = (
-            avg_collab * watch_count + collab_vec
-        ) / new_count if avg_collab is not None else collab_vec.copy()
 
     # Сохраняем watched_ids
     watched_ids = json.loads(user["watched_ids"] or "[]")

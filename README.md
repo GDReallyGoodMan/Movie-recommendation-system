@@ -11,7 +11,7 @@
 **[🚀 Демо](https://movie-recommendation-system-nu-seven.vercel.app/)** | **[📓 Ноутбук](https://www.kaggle.com/code/gdreallygoodman/movies-recsys-sent-transf-colab-filter-rerank)** 
 ---
 
-## 🥉 Бронзовая медаль (10 Upvotes)
+## 🥉 Бронзовая медаль (11 Upvotes)
 
 <table>
 <tr>
